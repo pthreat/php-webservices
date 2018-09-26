@@ -1,0 +1,183 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2018-09-26T18:28:31.779Z",
+	"__export_source": "insomnia.desktop.app:v5.9.6",
+	"resources": [
+		{
+			"_id": "wrk_b78519e9397941d1b9d30fb0a330abbb",
+			"parentId": null,
+			"modified": 1537377139684,
+			"created": 1537377139684,
+			"name": "Webservices",
+			"description": "",
+			"certificates": [],
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_d94122f312014a7b9f03c85e33219108",
+			"parentId": "wrk_b78519e9397941d1b9d30fb0a330abbb",
+			"modified": 1537377139691,
+			"created": 1537377139691,
+			"name": "Base Environment",
+			"data": {},
+			"color": null,
+			"isPrivate": false,
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_36ffdbb1fcf948bca139d6a35faffe5e",
+			"parentId": "wrk_b78519e9397941d1b9d30fb0a330abbb",
+			"modified": 1537986493158,
+			"created": 1537377139689,
+			"name": "Default Jar",
+			"cookies": [
+				{
+					"creation": "2018-09-19T17:14:23.031Z",
+					"key": "PHPSESSID",
+					"value": "hc3n6im8c0820d5l8dg4qe3cq2",
+					"domain": "localhost",
+					"path": "/",
+					"hostOnly": true,
+					"lastAccessed": "2018-09-19T17:14:23.031Z",
+					"id": "8837139725406127"
+				},
+				{
+					"creation": "2018-09-26T17:15:11.521Z",
+					"key": "REST_API",
+					"value": "qm3o243mia5sg7nvceuv3vd1a4",
+					"path": "/",
+					"hostOnly": true,
+					"domain": "localhost",
+					"lastAccessed": "2018-09-26T18:28:13.158Z",
+					"id": "6917768185593394"
+				}
+			],
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "fld_72a11c4450bd4168ba2925e8178e12fe",
+			"parentId": "wrk_b78519e9397941d1b9d30fb0a330abbb",
+			"modified": 1537986102902,
+			"created": 1537986102902,
+			"name": "Authentication",
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1537986102902,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_37dc480c6ccb43eeb36ad89a9ee79f1f",
+			"parentId": "fld_72a11c4450bd4168ba2925e8178e12fe",
+			"modified": 1537986116404,
+			"created": 1537377170180,
+			"url": "http://localhost:8080/auth/login",
+			"name": "Login",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/x-www-form-urlencoded",
+				"params": [
+					{
+						"name": "email",
+						"value": "webservices@gmail.com",
+						"id": "pair_7a218a898021435cba481c721f7a2d19",
+						"disabled": false
+					},
+					{
+						"name": "password",
+						"value": "admin",
+						"id": "pair_9f5bf719a4524e5caef553ffeaf5bd6c",
+						"disabled": false
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"id": "pair_0d1cfd55b6bf4ea8abe52e30652aecfd"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1537617031936.2812,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_f679b9ebcda64e01b798be16dd3efb6a",
+			"parentId": "fld_72a11c4450bd4168ba2925e8178e12fe",
+			"modified": 1537986124784,
+			"created": 1537983812788,
+			"url": "http://localhost:8080/auth/logout",
+			"name": "Logout",
+			"description": "",
+			"method": "GET",
+			"body": {
+				"mimeType": "application/x-www-form-urlencoded",
+				"params": []
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"id": "pair_0d1cfd55b6bf4ea8abe52e30652aecfd"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1537617031836.2812,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_2a1b9489e06345d48f79926a03acd59d",
+			"parentId": "fld_72a11c4450bd4168ba2925e8178e12fe",
+			"modified": 1537986121095,
+			"created": 1537984049084,
+			"url": "http://localhost:8080/auth/whoami",
+			"name": "Whoami",
+			"description": "",
+			"method": "GET",
+			"body": {
+				"mimeType": "application/x-www-form-urlencoded",
+				"params": [
+					{
+						"name": "email",
+						"value": "webservices@gmail.com",
+						"id": "pair_7a218a898021435cba481c721f7a2d19",
+						"disabled": false
+					},
+					{
+						"name": "password",
+						"value": "admin",
+						"id": "pair_9f5bf719a4524e5caef553ffeaf5bd6c",
+						"disabled": false
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"id": "pair_0d1cfd55b6bf4ea8abe52e30652aecfd"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1537617031886.2812,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		}
+	]
+}

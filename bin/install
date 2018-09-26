@@ -1,0 +1,62 @@
+#!/bin/bash
+
+export dir=$(dirname $0);
+
+cd $dir/..
+
+echo "Instalando dependencias de composer ...";
+
+./bin/composer install 
+
+./bin/propel-generate-sql
+./bin/propel-create-config
+./bin/propel-create-models
+
+export name="Juan";
+export lastname="Gomez";
+export email="webservices@gmail.com";
+export password="admin";
+
+export encPassword=$(php -r "echo password_hash('$password', PASSWORD_DEFAULT);");
+
+export dbPass=$(php -r "require 'config/database/dbConstants.php'; echo DB_PASSWORD;");
+export dbUser=$(php -r "require 'config/database/dbConstants.php'; echo DB_USERNAME;");
+export dbName=$(php -r "require 'config/database/dbConstants.php'; echo DB_NAME;");
+
+export sql="
+	DROP DATABASE IF EXISTS $dbName;
+	CREATE DATABASE $dbName;
+	GRANT ALL PRIVILEGES ON $dbName.* TO $dbUser@localhost IDENTIFIED BY '$dbPass';
+";
+
+echo -e "\n\nIMPORTANTE: Si la base de datos ya esta creada y no queres borrarla apreta CTRL+C para abortar\n\n"
+
+read -p 'Contraseña para usuario root (presiona enter si no tiene password):' sqlPass
+
+echo "Creando base de datos e Importando el archivo SQL generado";
+
+mysql -uroot -p"$sqlPass" <<< "$sql";
+mysql -uroot -p"$sqlPass" -D$dbName < ./sql/default.sql;
+
+echo "Insertando usuario administrador por defecto User: $email | Pass: $password";
+
+mysql -uroot -p"$sqlPass" -D$dbName <<< "
+INSERT INTO user 
+SET name='$name',
+lastname='$lastname',
+email='$email',
+password='$encPassword',
+isAdmin=1;
+";
+
+echo "Agregando la carpeta de modelos al autoloader de composer";
+
+export composerJSON=$(php -r '$conf=json_decode(file_get_contents("composer.json"), true); $conf["autoload"]["classmap"] = ["model/webservices/orm"]; echo json_encode($conf, \JSON_PRETTY_PRINT);');
+
+echo "$composerJSON" > "composer.json";
+
+./bin/composer dump-autoload
+
+[ ! -d "logs" ] && echo "Creando directorio de logs" && mkdir logs
+
+echo "Listo!"

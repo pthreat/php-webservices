@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export dir=$(dirname $0);
+cd $dir/..
+
+echo "Creando modelos de propel"
+
+./vendor/bin/propel model:build --config-dir config/database --schema-dir config/database --output-dir model

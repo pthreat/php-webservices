@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" identifierQuoting="true" defaultIdMethod="native" defaultPhpNamingMethod="underscore" namespace="webservices\orm">
+  <!-- table user -->
+  <table name="user" idMethod="native" phpName="User">
+    <column name="id" phpName="Id" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="FirstName" type="VARCHAR" size="60" required="true"/>
+    <column name="lastname" phpName="Lastname" type="VARCHAR" size="80" required="true"/>
+    <column name="email" phpName="Email" type="VARCHAR" size="120" required="true"/>
+    <column name="password" phpName="Password" type="VARCHAR" size="128" required="true"/>
+    <column name="isAdmin"  phpName="isAdmin" type="INTEGER" size="1" required="true"/>
+
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+      <parameter name="Charset" value="utf8mb4"/>
+    </vendor>
+  </table>
+</database>

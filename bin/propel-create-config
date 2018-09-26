@@ -4,6 +4,6 @@ export dir=$(dirname $0);
 
 cd $dir/..
 
-echo "Creando configuracion para conexion a la base de datos" 
+echo "Creating database connection configuration file"
 
 ./vendor/bin/propel config:convert --config-dir config/database --output-dir config/database

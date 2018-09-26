@@ -4,7 +4,7 @@ export dir=$(dirname $0);
 
 cd $dir/..
 
-echo "Exportando schema.xml a sentencias SQL (el archivo generado se encuentra en la carpeta sql)"
+echo "Exporting schema.xml to sql statements"
 
 ./vendor/bin/propel sql:build   \
 	--config-dir config/database \
